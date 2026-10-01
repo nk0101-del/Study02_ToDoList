@@ -1,0 +1,41 @@
+<!-- 생성 일시: 2026-10-01 02:19 KST -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>할 일 관리</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>할 일 관리</h1>
+      <p id="progress-text" class="progress-text"></p>
+      <div class="bar"><div id="progress-bar" class="bar-fill"></div></div>
+      <ul id="category-progress" class="category-progress"></ul>
+    </header>
+
+    <form id="add-form" class="add-form">
+      <input id="add-text" type="text" placeholder="할 일을 입력하세요" aria-label="할 일 내용" autocomplete="off">
+      <select id="add-category" aria-label="카테고리">
+        <option value="work">업무</option>
+        <option value="personal">개인</option>
+        <option value="study">공부</option>
+      </select>
+      <button type="submit">추가</button>
+    </form>
+
+    <nav id="filters" class="filters" aria-label="카테고리 필터">
+      <button type="button" data-filter="all" class="active">전체</button>
+      <button type="button" data-filter="work">업무</button>
+      <button type="button" data-filter="personal">개인</button>
+      <button type="button" data-filter="study">공부</button>
+    </nav>
+
+    <ul id="todo-list" class="todo-list"></ul>
+    <p id="empty" class="empty" hidden>표시할 할 일이 없습니다.</p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
