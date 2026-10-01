@@ -60,6 +60,8 @@ button {
 }
 .add-form button { background: #6366f1; border-color: #6366f1; color: #fff; }
 
+button.danger { background: #dc2626; border-color: #dc2626; color: #fff; }
+
 .filters { display: flex; gap: 6px; margin-bottom: 12px; }
 .filters button.active { background: #111827; border-color: #111827; color: #fff; }
 

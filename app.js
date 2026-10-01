@@ -5,6 +5,7 @@ const CATEGORIES = { work: '업무', personal: '개인', study: '공부' };
 let todos = load();
 let filter = 'all';
 let editingId = null;
+let confirmingId = null;
 
 const $ = (id) => document.getElementById(id);
 
@@ -118,10 +119,18 @@ function renderItem(t) {
   editBtn.textContent = '수정';
   editBtn.addEventListener('click', () => { editingId = t.id; render(); });
   const delBtn = document.createElement('button');
+  if (confirmingId === t.id) {
+    delBtn.textContent = '정말 삭제';
+    delBtn.className = 'danger';
+    delBtn.addEventListener('click', () => { confirmingId = null; deleteTodo(t.id); });
+    const cancelDelBtn = document.createElement('button');
+    cancelDelBtn.textContent = '취소';
+    cancelDelBtn.addEventListener('click', () => { confirmingId = null; render(); });
+    li.append(text, badge, delBtn, cancelDelBtn);
+    return li;
+  }
   delBtn.textContent = '삭제';
-  delBtn.addEventListener('click', () => {
-    if (confirm('이 할 일을 삭제할까요?')) deleteTodo(t.id);
-  });
+  delBtn.addEventListener('click', () => { confirmingId = t.id; render(); });
   li.append(text, badge, editBtn, delBtn);
   return li;
 }
